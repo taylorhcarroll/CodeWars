@@ -62,5 +62,5 @@ function dirReduc(arr){
     }
       return accumulator;
     }, []);
-  //the empty array is to provide the initial value
+  //the empty array is to provide the initial value, if none were supplied it would start at index 1, and not 0 of the array provided
 }
