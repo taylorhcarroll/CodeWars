@@ -64,3 +64,47 @@ function dirReduc(arr){
     }, []);
   //the empty array is to provide the initial value, if none were supplied it would start at index 1, and not 0 of the array provided
 }
+
+//another example of how this could be accomplished
+const opposites = {
+                          'NORTH': 'SOUTH', 
+                          'SOUTH': 'NORTH',
+                          'EAST': 'WEST', 
+                          'WEST': 'EAST'
+                          }
+                            
+function dirReduc(arr){
+  return arr.reduce( (reducedPath, currentStep) => {
+    const lastStep = reducedPath[reducedPath.length-1]
+    opposites[lastStep] === currentStep ?
+                                   reducedPath.pop() :
+                                   reducedPath.push(currentStep)
+    return reducedPath
+  }, [])
+}
+
+// set up a map for the opposing values
+var opposite = {
+  "NORTH" : "SOUTH",
+  "SOUTH" : "NORTH",
+  "EAST" : "WEST",
+  "WEST" : "EAST"
+};
+function dirReduc(arr){
+  // flag to track if the array was changed in order to recurse
+  var changed = false;
+  // loop through the array, eliminating opposing pairs
+  for (var i = 0; i < arr.length-1; i++){
+  //if the opposite of 'i' is equal to the value right after i (or [i+1]) in the array, 
+  //remove from the array starting at index i, and remove the next one after it 
+    if (arr[i+1] == opposite[arr[i]]) {
+      arr.splice(i,2);
+  //since we did something to the array, flag that it's been changed
+      changed = true;
+    }
+  }
+  // if array was altered at all
+  // recurse to check again for new matches
+  return changed ? dirReduc(arr) : arr
+}
+
