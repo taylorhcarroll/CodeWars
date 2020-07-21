@@ -37,3 +37,15 @@ function iqTest(numbers){
   return result + 1
   //result should return the index + 1 to make it readable to humans
 }
+
+//could also be accomplished using this:
+//instead of looping through, we filter the array using a modulus and set those values to even or odd
+//then we look at the lenfrg of both, the one thats equal 
+const iqTest = test => {
+  const numbers = test.split(" ");
+  const evens = numbers.filter(el => el%2 );
+  const odds = numbers.filter(el => !(el%2));
+  const differ = evens.length == 1 ? evens[0] : odds[0]
+  
+  return numbers.indexOf(differ) + 1
+}
