@@ -22,3 +22,18 @@ When you pass the function (a, b) => a - b, you’re telling the .sort() functio
   //number at that position in the array.
         .map(item => item % 2 ? odds.shift() : item);
 }
+
+
+//this was kinda complicated surprisingly, so I had to add a lot of comments of my research to figure out how to put this together
+//here it is without the comments
+
+/*
+function sortArray(array) {
+  const odds = array
+        .filter(x => x%2)
+        .sort((a, b) => a - b);
+
+    return array
+        .map(item => item % 2 ? odds.shift() : item);
+}
+*/
