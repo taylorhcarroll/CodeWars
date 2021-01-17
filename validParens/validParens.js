@@ -5,8 +5,10 @@
 
 parens = "())"
 
+//fancy shamncy regEx version
+
 function validParentheses(parens) {
-    //TODO 
+    //TODO
     regEx = /\(\)/g;
 
     while (regEx.test(parens)) {
@@ -15,4 +17,17 @@ function validParentheses(parens) {
 
     return parens === '';
 
+}
+
+//my initial attempt
+
+function validParentheses(parens) {
+    var n = 0;
+    for (var i = 0; i < parens.length; i++) {
+        if (parens[i] == '(') n++;
+        if (parens[i] == ')') n--;
+        if (n < 0) return false;
+    }
+
+    return n == 0;
 }
